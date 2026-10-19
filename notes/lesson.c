@@ -4,6 +4,8 @@
 #include <string.h>
 #include <stdio.h>
 
+// avoid global variables
+
 #define COOL_NUMBER 7
 // preprocessor directive that defines a constant value, can be used throughout the program; this is replaced by the preprocessor before compilation, so it doesn't take up memory space
 int show_data_types()
