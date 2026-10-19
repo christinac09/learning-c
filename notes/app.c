@@ -1,8 +1,8 @@
-#include <stdlib.h>
-#include <ctype.h>
-#include <stdbool.h>
-#include <string.h>
-#include <stdio.h>
+#include <stdio.h>   //input/output functions
+#include <stdlib.h>  //memory allocation and process control functions
+#include <ctype.h>   //character handling functions
+#include <stdbool.h> //boolean type support
+#include <string.h>  //string handling functions
 
 // avoid global variables
 
@@ -36,8 +36,10 @@ int main()
 // shows where the data is saved in memory, uses a pointer
 // very last spot is always /0
 
-// running the code in terminal (after installing gcc compiler):
-//  wsl to open wsl ubuntu terminal
+// running the code in terminal (after installing wsl ubuntu & gcc compiler - wsl.exe --install, sudo apt update && sudo apt install build-essential ? i forgot):
+//  wsl to open wsl ubuntu terminal, or code .
 //  cd into folder
 //  gcc -o app app.c
 //  ./app
+
+// must compile again everytime changes are made before running or it'll run old version
