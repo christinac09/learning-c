@@ -35,3 +35,9 @@ int main()
 // printf("X = %p, Y = %p, Z = %p\n", x, y, z);
 // shows where the data is saved in memory, uses a pointer
 // very last spot is always /0
+
+// running the code in terminal (after installing gcc compiler):
+//  wsl to open wsl ubuntu terminal
+//  cd into folder
+//  gcc -o app app.c
+//  ./app
