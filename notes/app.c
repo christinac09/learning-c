@@ -16,7 +16,7 @@ int show_data_types()
     strcpy(name, "Steve");
     z = COOL_NUMBER * x;
     printf("x is %d, string is %s z is %d \n", x, name, z);
-    // %d is for integers, %s is for strings, %f is for floats, %c is for characters
+    // %d = integers, %s = strings, %f = floats, %c = characters
     // \n needed for new line or there'll be error
     return 0; // return 0 to indicate success; all functions must return a value
 }
