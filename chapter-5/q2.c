@@ -10,7 +10,7 @@ int main()
     int hour;
     char minute[2];
     printf("Enter a 24-hour time: ");
-    scanf("%d:%s", &hour, minute);
+    scanf("%d:%s", &hour, minute); // why does one need to use & for hour but not for minute?
 
     int equivalent_hour;
     if (hour > 12)
