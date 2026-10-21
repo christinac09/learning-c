@@ -1,3 +1,3 @@
 - Notes from lesson in main branch
 
-- Homework assignments in C-Programming-Projects branch
+- Homework assignments in other branches
