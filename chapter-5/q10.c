@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h> // for floor function
+// to compile: gcc -o q10 q10.c -lm
 
 /* Using the switch statement, write a program that converts a numerical grade into a letter grade:
 Enter numerical grade: 84
@@ -9,9 +10,13 @@ Print an error message if the grade is larger than 100 or less than 0. Hint: Bre
 
 int main()
 {
-    int grade;
+    float grade;
     printf("Enter numerical grade: ");
-    scanf("%d", &grade);
+    if (scanf("%f", &grade) != 1)
+    {
+        printf("Invalid input. Please enter a number.\n");
+        return 1;
+    }
 
     int tens_digit = floor(grade / 10);
 
@@ -39,7 +44,7 @@ int main()
         printf("Letter grade: F\n");
         break;
     default:
-        printf("Error: Grade cannot be greater than 100 or less than 0.\n"); // not working for negatives
+        printf("Error: Grade cannot be greater than 100 or less than 0.\n");
         break;
     }
     return 0;
