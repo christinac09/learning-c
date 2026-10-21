@@ -44,8 +44,10 @@ int main()
         printf("Letter grade: F\n");
         break;
     default:
-        printf("Error: Grade cannot be greater than 100 or less than 0.\n");
+        printf("Error: Grade cannot be greater than 100 or less than 0.\n"); // orrrr use if statement to check, then default can be F grades
         break;
     }
     return 0;
 }
+
+// another method: store letter grade as a char and print it at the end
