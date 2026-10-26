@@ -1,23 +1,33 @@
 #include <stdio.h>
 
+int get_gcd(int m, int n)
+{
+    int remainder;
+    while (n != 0)
+    {
+        remainder = m % n;
+        m = n;
+        n = remainder;
+    }
+    return m;
+}
+
 int main()
 {
     int numerator, denominator, remainder;
-    printf("Enter a fraction: ");
-    scanf("%d/%d", &numerator, &denominator);
-    while (n != 0)
+    printf("Enter a fraction (m/n): ");
+    if (scanf("%d/%d", &numerator, &denominator) != 2)
     {
-        remainder = numerator % denominator;
-        numerator = denominator;
-        denominator = remainder;
-    }
+        printf("Invalid input. Please enter a fraction in the form m/n.\n");
+        return 1;
+    } // but keeps running if one int entered (ex: 5/)
 
-    int gcd = numerator;
+    int gcd = get_gcd(numerator, denominator);
 
-    int reduced_numerator = numerator / gcd;
-    int reduced_denominator = denominator / gcd;
+    numerator /= gcd;
+    denominator /= gcd;
 
-    printf("Reduced fraction: %d/%d\n", reduced_numerator, reduced_denominator);
+    printf("Reduced fraction: %d/%d\n", numerator, denominator);
 
     return 0;
 }
