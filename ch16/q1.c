@@ -19,7 +19,7 @@ int main()
         printf("Invalid input. Please enter a valid dialing code.\n");
         return 1;
     };
-    for (int i = 0; i < sizeof(country_codes) / sizeof(country_codes[0]); i++)
+    for (int i = 0; i < sizeof(country_codes) / sizeof(country_codes[0]); i++) // length of array can be found by dividing size of array by size of first item
     {
         if (country_codes[i].code == code)
         {
