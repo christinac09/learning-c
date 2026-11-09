@@ -14,7 +14,7 @@ struct song
     int year;
 };
 
-void add(struct song song) {
+void add(struct song song, playlst) {
 };
 
 void delete(struct song song) {
@@ -24,4 +24,15 @@ void delete(struct song song) {
 int main()
 {
     struct song playlist[];
+    struct song song;
+    for (int i = 0; i < 3; i++)
+    {
+        printf("Enter a song title: ");
+        scanf("%s", song.title);
+        printf("Enter a song artist: ");
+        scanf("%s", song.artist);
+        printf("Enter a song year: ");
+        scanf("%d", song.year);
+        // add
+    }
 };
