@@ -18,7 +18,7 @@ struct song
 };
 
 /* inserts node to beginning of list */
-int add(struct song **playlist, char new_title[30], char new_artist[30], int new_year)
+int add(struct song **playlist, const char *new_title, const char *new_artist, int new_year)
 {                                           // playlist points to first song of list; ** is pointer to a pointer, so the pointer in main can be changed
     struct song *new_song;                  // points to the node temporarily until it's inserted into the list
     new_song = malloc(sizeof(struct song)); // allocate memory for new node, saving return value in new_song
@@ -29,8 +29,11 @@ int add(struct song **playlist, char new_title[30], char new_artist[30], int new
     };
     strcpy(new_song->title, new_title); // for arrays: use strcpy to copy string into array, can't just use do new_song->title = new_title;
     strcpy(new_song->artist, new_artist);
-    new_song->year = new_year;       // same as (*new_song).year = new_year
-    new_song->next_song = *playlist; // point to the next song in the list
+    new_song->year = new_year; // same as (*new_song).year = new_year
+
+    new_song->next_song = *playlist; // makes the new node point to the previous first node
+    *playlist = new_song;            // makes the new node the new head of the list
+
     return 0;
 }
 
@@ -41,13 +44,16 @@ int delete(struct song song) {
 void printList(struct song *head)
 {
     struct song *current = head; // start at the head node
-
+    if (current == NULL)
+    {
+        printf("Playlist is empty\n");
+        return;
+    };
     while (current != NULL) // while list not empty
     {
         printf("Title: %s, Artist: %s, Year: %d\n", current->title, current->artist, current->year);
         current = current->next_song; // update current, move to the next node
     }
-    printf("NULL\n");
 }
 
 int main()
