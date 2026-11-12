@@ -8,6 +8,7 @@
 ● Songs contain an artist, name and year released
 In main function, simply call the add to playlist 3 times. Print the playlist.
 Then call delete on one of the songs and reprint the playlist showing it no longer contains the delete song. */
+/* most notes are from the textbook ch 17 */
 
 struct song
 {
