@@ -17,7 +17,7 @@ struct song
     struct song *next_song; // pointer to the next song (node) in the playlist (linked list)
 };
 
-/* inserts node to beginning of list */
+/* inserts node to beginning of list - how would it look if inserting at the end?? */
 int add(struct song **playlist, const char *new_title, const char *new_artist, int new_year)
 {                                           // playlist points to first song of list; ** is pointer to a pointer, so the pointer in main can be changed
     struct song *new_song;                  // points to the node temporarily until it's inserted into the list
@@ -37,8 +37,34 @@ int add(struct song **playlist, const char *new_title, const char *new_artist, i
     return 0;
 }
 
-int delete(struct song song) {
+int delete(struct song **playlist, char *title)
+{
+    struct song *current, *previous;
+    current = *playlist;
+    previous = NULL;
+    while (current != NULL && strcmp(current->title, title) != 0) // can't use != to compare strings
+    {
+        previous = current;
+        current = current->next_song;
+    }
+    // while current title doesn't match title to delete, keep going thru list; previous keeps track of node before current so we can update its next pointer when we delete current
 
+    if (current == NULL) // song not found
+    {
+        printf("Song not found in playlist\n");
+        return -1;
+    };
+    if (previous == NULL) // song to delete is first node
+    {
+        *playlist = current->next_song; // update head song to point to next node
+    }
+    else
+    {
+        previous->next_song = current->next_song; // update previous node to point to node after current node
+    };
+    free(current);
+
+    return 0;
 };
 
 void printList(struct song *head)
@@ -56,6 +82,19 @@ void printList(struct song *head)
     }
 }
 
+/* frees dynamically allocated memory so it can be used for other things */
+void freeList(struct song *head)
+{
+    struct song *current = head;
+
+    while (current != NULL)
+    {
+        struct song *next = current->next_song;
+        free(current);
+        current = next;
+    }
+};
+
 int main()
 {
     struct song *first_song = NULL; // points to first node; NULL indicates that list is empty
@@ -65,6 +104,13 @@ int main()
     add(&first_song, "Ain't in LA", "Adela", 2026);
 
     printf("Playlist:\n");
+    printList(first_song);
+
+    printf("\n");
+
+    delete(&first_song, "Housewife");
+
+    printf("Playlist after deleting 'Housewife':\n");
     printList(first_song);
 
     return 0;
